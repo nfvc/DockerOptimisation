@@ -5,24 +5,24 @@
 
 ## V1
 
-### Changements apportés :
+### Modifications effectuées :
 
-1. **Image de base plus légère** : Utilisation de `node:18-alpine` au lieu de `node:18`
-    - Réduction de la taille de l'image de ~900MB à ~170MB
+1. **Adoption d'une image de base optimisée** : Transition de `node:18` vers `node:18-alpine`
+   - Diminution significative de la taille d'image de ~900MB à ~170MB
 
-2. **Cache des dépendances** : Copie séparée de `package*.json`
-    - Améliore la vitesse de build en utilisant le cache Docker
-    - Évite la réinstallation des dépendances si le code source change
+2. **Optimisation du cache des dépendances** : Copie isolée des fichiers `package*.json`
+   - Accélération du processus de build grâce au système de cache Docker
+   - Prévention de la réinstallation des dépendances lors des modifications du code source
 
-3. **Utilisateur non-root** : Création d'un utilisateur dédié
-    - Améliore la sécurité en évitant l'exécution en tant que root
+3. **Implémentation d'un utilisateur dédié** : Mise en place d'un utilisateur non-root
+   - Renforcement de la sécurité en évitant l'exécution avec les privilèges root
 
-4. **Multi-stage build** (optionnel) : Séparation build/runtime
-    - Réduit encore la taille finale de l'image
+4. **Architecture multi-stage** : Distinction entre les phases de build et d'exécution
+   - Réduction supplémentaire de la taille finale de l'image
 
-### Avant/Après :
-- **Taille** : ~900MB → ~170MB (-80%)
-- **Cache** : Aucun → Cache des dépendances optimisé
+### Comparaison avant/après :
+- **Taille** (de Node.js): ~900MB → ~170MB (-80%)
+- **Cache** : Absent → Cache des dépendances optimisé
 
 Premier Build :
 Building 28.5s (13/13) FINISHEDBuilding 28.5s (13/13) FINISHED
@@ -34,3 +34,36 @@ Taille des images :
 - dockeropti  v1 : 1.73GB
 - dockeropti  v2 : 574MB
 
+
+Taille des images :
+- dockeropti  v1 : 1.73GB
+- dockeropti  v2 : 574MB
+
+## V2
+
+### Changements apportés :
+
+1. **Migration vers Node.js 22-alpine** : Passage de Node.js 18 à la version 22 LTS
+   - Mise à jour vers la dernière version stable et supportée
+
+2. **Suppression des dépendances de build** : Retrait de `build-base` et `ca-certificates`
+   - Élimination des outils de compilation non nécessaires en production
+
+3. **Optimisation de l'installation npm** : Utilisation de `npm ci --only=production`
+   - Installation uniquement des dépendances de production
+   - Processus d'installation plus rapide et déterministe
+
+4. **Simplification de la structure** : Réduction du nombre de layers Docker
+   - Suppression des optimisations de sécurité non prioritaires
+   - Focus sur la réduction de taille uniquement
+
+5. **Utilisation de l'utilisateur node natif** : Exploitation de l'utilisateur pré-configuré
+   - Évite la création d'utilisateurs personnalisés
+
+### Avant/Après :
+- **Taille** : 574MB → 271MB 
+- **Temps de build** : 12.3s → 5.6s
+
+### Résultats V2 :
+- **Temps de build** : 5.6s (11/11) FINISHED
+- **Taille finale** : 271MB
