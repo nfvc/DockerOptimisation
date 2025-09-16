@@ -1,5 +1,9 @@
+# TP Optimisation Docker
+### Optimisations Dockerfile
 
-## Optimisations Dockerfile
+
+
+## V1
 
 ### Changements apportés :
 
@@ -29,3 +33,4 @@ Building 12.3s (11/11) FINISHED
 Taille des images :
 - dockeropti  v1 : 1.73GB
 - dockeropti  v2 : 574MB
+
