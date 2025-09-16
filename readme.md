@@ -67,3 +67,26 @@ Taille des images :
 ### Résultats V2 :
 - **Temps de build** : 5.6s (11/11) FINISHED
 - **Taille finale** : 271MB
+
+## V3
+
+### Changements apportés :
+
+1. **Suppression de MongoDB** : Retrait de la dépendance `mongodb@6.19.0`
+   - Élimination d'une dépendance non utilisée de 25-35MB
+   - Simplification du package.json avec uniquement Express
+
+### Avant/Après :
+- **Taille** : 271MB → 254MB
+- **Temps de build** : 5.6s → 5.4s
+
+### Résultats V3 :
+- **Temps de build** : 5.4s (11/11) FINISHED
+- **Taille finale** : 254MB
+- **Optimisation** : Suppression des dépendances non utilisées
+
+### Package.json final optimisé :
+```json
+{
+  "dependencies": {
+    "express": "^4.21.2"
