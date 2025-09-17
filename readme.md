@@ -1,7 +1,7 @@
 # TP Optimisation Docker
 ### Optimisations Dockerfile
 
-
+#### Repository github : https://github.com/nfvc/DockerOptimisation
 
 ## V1
 
@@ -25,7 +25,7 @@
 - **Cache** : Absent → Cache des dépendances optimisé
 
 Premier Build :
-Building 28.5s (13/13) FINISHEDBuilding 28.5s (13/13) FINISHED
+Building 28.5s (13/13) FINISHED
 
 Deuxième après la branch OptimisationDockerFile:
 Building 12.3s (11/11) FINISHED
