@@ -1,3 +1,6 @@
+Lien du répository github : https://github.com/nfvc/M2_IPM_CI-CD
+
+
 # TP1 
 ## Approche simple de Docker - Objectif : conteneuriser une application simple et la lancer avec Docker.
 - Étapes clés : créer un Dockerfile basique, construire l’image, exécuter le conteneur, exposer un port, option volume, docker-compose simple.
